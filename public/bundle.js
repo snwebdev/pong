@@ -78,7 +78,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var {bat1, bat2, scores, ball} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\nvar {BAT_HEIGHT, BAT_WIDTH,BAT_H_SPACE, BAT_V_SPACE, COMP_SPEED} = __webpack_require__(/*! ./const */ \"./app/const.js\");\nvar moveEverything = __webpack_require__(/*! ./moveEverything */ \"./app/moveEverything.js\");\nvar checkMovement = __webpack_require__(/*! ./checkMovement */ \"./app/checkMovement.js\");\n\nconsole.log(bat2);\n\nvar canvas;\nvar canvasContext;\n\nfunction getMousePosition(e) {\n    var rect = canvas.getBoundingClientRect();\n    var root = document.documentElement;\n    mouseX = e.clientX - rect.left - root.scrollLeft;\n    mouseY = e.clientY - rect.top - root.scrollTop;\n    return {x: mouseX, y: mouseY};\n\n}\n\nwindow.onload = function () {\n\n    canvas = document.getElementById('gameCanvas');\n    canvasContext = canvas.getContext('2d');\n    canvas.style.cursor = \"none\";\n\n    var fps = 30;\n    setInterval(function () {\n       moveEverything(ball,bat1,bat2);\n        checkMovement(ball, bat1, bat2);\n        drawEverything();\n\n    }, 1000 / fps);\n\n    canvas.addEventListener('mousemove', function (e) {\n        mousePosition = getMousePosition(e);\n        bat1.newY = mousePosition.y - BAT_HEIGHT / 2;\n        // bat2.dy = mousePosition.y - BAT_HEIGHT / 2;\n    })\n}\n\n\n\n\n\n\n\nfunction drawEverything() {\n    //canvas\n    drawRect(0, 0, canvas.width, canvas.height, 'black');\n\n    //ball\n    drawRect(ball.x, ball.y, 10, 10, 'white');\n\n    //bat1\n    drawRect(bat1.x, bat1.y, BAT_WIDTH, BAT_HEIGHT, 'white');\n    bat1.dy = 0;\n\n    //bat2\n    drawRect(bat2.x, bat2.y, BAT_WIDTH, BAT_HEIGHT, 'white');\n}\n\nfunction drawRect(X, Y, width, height, colour) {\n    canvasContext.fillStyle = colour;\n    canvasContext.fillRect(X, Y, width, height);\n}\n\n\n\n//# sourceURL=webpack:///./app/app.js?");
+eval("var {bat1, bat2, scores, ball, canvas} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\nvar {BAT_HEIGHT, BAT_WIDTH,BAT_H_SPACE, BAT_V_SPACE, COMP_SPEED} = __webpack_require__(/*! ./const */ \"./app/const.js\");\nvar moveEverything = __webpack_require__(/*! ./moveEverything */ \"./app/moveEverything.js\");\nvar checkMovement = __webpack_require__(/*! ./checkMovement */ \"./app/checkMovement.js\");\nvar drawEverything = __webpack_require__(/*! ./drawEverything */ \"./app/drawEverything.js\");\n\nconsole.log(bat2);\n\nvar canvas;\nvar canvasContext;\n\nfunction getMousePosition(e) {\n    var rect = canvas.getBoundingClientRect();\n    var root = document.documentElement;\n    mouseX = e.clientX - rect.left - root.scrollLeft;\n    mouseY = e.clientY - rect.top - root.scrollTop;\n    return {x: mouseX, y: mouseY};\n\n}\n\nwindow.onload = function () {\n\n\n    canvas = document.getElementById('gameCanvas');\n    canvasContext = canvas.getContext('2d');\n    canvas.style.cursor = \"none\";\n\n    var fps = 30;\n    setInterval(function () {\n\n      // moveEverything(ball,bat1,bat2);\n      //  checkMovement(ball, bat1, bat2);\n        drawEverything();\n\n\n    }, 1000 / fps);\n\n    canvas.addEventListener('mousemove', function (e) {\n        mousePosition = getMousePosition(e);\n        bat1.newY = mousePosition.y - BAT_HEIGHT / 2;\n        // bat2.dy = mousePosition.y - BAT_HEIGHT / 2;\n    })\n}\n\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./app/app.js?");
 
 /***/ }),
 
@@ -126,6 +126,28 @@ eval("module.exports = {\n    BAT_HEIGHT: 100,\n    BAT_WIDTH: 15,\n    BAT_H_SP
 
 /***/ }),
 
+/***/ "./app/drawEverything.js":
+/*!*******************************!*\
+  !*** ./app/drawEverything.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var {CANVAS_HEIGHT, CANVAS_WIDTH, BAT_WIDTH, BAT_HEIGHT} = __webpack_require__(/*! ./const */ \"./app/const.js\");\nvar {ball, bat1, bat2} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\nvar drawRect = __webpack_require__(/*! ./drawRect */ \"./app/drawRect.js\");\n\nmodule.exports = function drawEverything() {\n    //canvas\n    drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, 'black');\n\n    //ball\n    drawRect(ball.x, ball.y, 10, 10, 'white');\n\n    //bat1\n    drawRect(bat1.x, bat1.y, BAT_WIDTH, BAT_HEIGHT, 'white');\n\n\n    //bat2\n    drawRect(bat2.x, bat2.y, BAT_WIDTH, BAT_HEIGHT, 'white');\n}\n\n\n\n\n\n//# sourceURL=webpack:///./app/drawEverything.js?");
+
+/***/ }),
+
+/***/ "./app/drawRect.js":
+/*!*************************!*\
+  !*** ./app/drawRect.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var {canvas, canvasContext} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\n\nmodule.exports = function drawRect(X, Y, width, height, colour) {\n    canvasContext.fillStyle = colour;\n    canvasContext.fillRect(X, Y, width, height);\n}\n\n//# sourceURL=webpack:///./app/drawRect.js?");
+
+/***/ }),
+
 /***/ "./app/initial.js":
 /*!************************!*\
   !*** ./app/initial.js ***!
@@ -133,7 +155,7 @@ eval("module.exports = {\n    BAT_HEIGHT: 100,\n    BAT_WIDTH: 15,\n    BAT_H_SP
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const {BAT_H_SPACE, BAT_WIDTH, BAT_HEIGHT} = __webpack_require__(/*! ./const */ \"./app/const.js\");\n\n\nmodule.exports = {\n    bat1: {\n        y: (600 - BAT_HEIGHT)/2,\n        x: BAT_H_SPACE,\n        dy: 0\n    },\n    bat2: {\n        y: (600 - BAT_HEIGHT)/2,\n        x: 800 - BAT_H_SPACE - BAT_WIDTH,\n        dy: 4,\n        maxSpeed: 20,\n        accel: 1\n    },\n    ball: {\n        x: 100,\n        y: 100,\n        dx: 10,\n        dy: 6,\n        size: 20,\n        inplay: true,\n        direction: \"right\"\n    },\n    scores: {\n        player: 0,\n        comp: 0\n    }\n}\n\n//# sourceURL=webpack:///./app/initial.js?");
+eval("const {BAT_H_SPACE, BAT_WIDTH, BAT_HEIGHT} = __webpack_require__(/*! ./const */ \"./app/const.js\");\n\n\nmodule.exports = {\n    bat1: {\n        y: (600 - BAT_HEIGHT)/2,\n        x: BAT_H_SPACE,\n        dy: 0\n    },\n    bat2: {\n        y: (600 - BAT_HEIGHT)/2,\n        x: 800 - BAT_H_SPACE - BAT_WIDTH,\n        dy: 4,\n        maxSpeed: 20,\n        accel: 1\n    },\n    ball: {\n        x: 100,\n        y: 100,\n        dx: 10,\n        dy: 6,\n        size: 20,\n        inplay: true,\n        direction: \"right\"\n    },\n    scores: {\n        player: 0,\n        comp: 0\n    },\n    canvas: {},\n    canvasContext: {}\n}\n\n//# sourceURL=webpack:///./app/initial.js?");
 
 /***/ }),
 
