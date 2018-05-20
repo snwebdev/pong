@@ -1,6 +1,7 @@
 var computerMove = require('./computerMove');
+var {bat1, bat2, ball} = require('./initial');
 
-module.exports = function moveEverything(ball,bat1,bat2) {
+module.exports = function moveEverything() {
     ball.x = ball.x + ball.dx;
     ball.y = ball.y + ball.dy;
     bat1.y = bat1.newY;

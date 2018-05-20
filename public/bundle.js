@@ -1,184 +1,517 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
+/******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/ 		}
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
+/******/ 		module.loaded = true;
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
-/******/
+
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app/app.js");
+/******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
 
-/***/ "./app/app.js":
-/*!********************!*\
-  !*** ./app/app.js ***!
-  \********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+	var {bat1} = __webpack_require__(1);
+	var {BAT_HEIGHT, BAT_WIDTH,BAT_H_SPACE, BAT_V_SPACE, COMP_SPEED} = __webpack_require__(2);
+	var moveEverything = __webpack_require__(3);
+	var checkMovement = __webpack_require__(5);
+	var drawEverything = __webpack_require__(8);
+	var drawDigit = __webpack_require__(10);
 
-eval("var {bat1, bat2, scores, ball, canvas} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\nvar {BAT_HEIGHT, BAT_WIDTH,BAT_H_SPACE, BAT_V_SPACE, COMP_SPEED} = __webpack_require__(/*! ./const */ \"./app/const.js\");\nvar moveEverything = __webpack_require__(/*! ./moveEverything */ \"./app/moveEverything.js\");\nvar checkMovement = __webpack_require__(/*! ./checkMovement */ \"./app/checkMovement.js\");\nvar drawEverything = __webpack_require__(/*! ./drawEverything */ \"./app/drawEverything.js\");\n\nconsole.log(bat2);\n\nvar canvas;\nvar canvasContext;\n\nfunction getMousePosition(e) {\n    var rect = canvas.getBoundingClientRect();\n    var root = document.documentElement;\n    mouseX = e.clientX - rect.left - root.scrollLeft;\n    mouseY = e.clientY - rect.top - root.scrollTop;\n    return {x: mouseX, y: mouseY};\n\n}\n\nwindow.onload = function () {\n\n\n    canvas = document.getElementById('gameCanvas');\n    canvasContext = canvas.getContext('2d');\n    canvas.style.cursor = \"none\";\n\n    var fps = 30;\n    setInterval(function () {\n\n      // moveEverything(ball,bat1,bat2);\n      //  checkMovement(ball, bat1, bat2);\n        drawEverything();\n\n\n    }, 1000 / fps);\n\n    canvas.addEventListener('mousemove', function (e) {\n        mousePosition = getMousePosition(e);\n        bat1.newY = mousePosition.y - BAT_HEIGHT / 2;\n        // bat2.dy = mousePosition.y - BAT_HEIGHT / 2;\n    })\n}\n\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./app/app.js?");
 
-/***/ }),
+	var canvas;
+	var canvasContext;
 
-/***/ "./app/ballReset.js":
-/*!**************************!*\
-  !*** ./app/ballReset.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
 
-eval("var {CANVAS_HEIGHT, CANVAS_WIDTH} = __webpack_require__(/*! ./const */ \"./app/const.js\");\nmodule.exports = function ballReset(ball) {\n    ball.inplay = true;\n    ball.x = CANVAS_WIDTH / 2;\n    ball.y = CANVAS_HEIGHT / 2;\n}\n\n//# sourceURL=webpack:///./app/ballReset.js?");
 
-/***/ }),
 
-/***/ "./app/checkMovement.js":
-/*!******************************!*\
-  !*** ./app/checkMovement.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+	window.onload = function () {
 
-eval("var {BAT_WIDTH, CANVAS_HEIGHT, CANVAS_WIDTH, BAT_H_SPACE, BAT_HEIGHT, BAT_V_SPACE} = __webpack_require__(/*! ./const */ \"./app/const.js\");\nvar {scores} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\nvar ballReset = __webpack_require__(/*! ./ballReset */ \"./app/ballReset.js\");\nvar reverseBallDirection = __webpack_require__(/*! ./reverseBallDirection */ \"./app/reverseBallDirection.js\");\n\nmodule.exports = function checkMovement(ball, bat1, bat2) {\n    //hit bat1\n    if (ball.x <= BAT_WIDTH + bat1.x) {\n        if (ball.inplay) {\n            if (ball.y > bat1.y &&\n                ball.y < (bat1.y + BAT_HEIGHT) &&\n                ball.inplay) {\n                ball.dx = -ball.dx;\n                reverseBallDirection(ball);\n            } else {\n                ball.inplay = false;\n            }\n        }\n\n    }\n\n    //hit bat2\n    if (ball.x + ball.size >= CANVAS_WIDTH - BAT_H_SPACE) {\n        if (ball.inplay) {\n            if (ball.y > bat2.y &&\n                ball.y < (bat2.y + BAT_HEIGHT)) {\n                ball.dx = -ball.dx;\n                reverseBallDirection(ball);\n            } else {\n                ball.inplay = false;\n            }\n        }\n    }\n\n    //hit top\n    if (ball.y <= 0) ball.dy = -ball.dy;\n\n    //hit bottom\n    if (ball.y + ball.size >= CANVAS_HEIGHT) ball.dy = -ball.dy;\n\n    //out left\n    if (ball.x + ball.size <= 0){\n        scores.comp++;\n        ballReset(ball);\n       // console.log(scores);\n    }\n\n    //out right\n    if (ball.x >= CANVAS_WIDTH) {\n        scores.player++;\n        ballReset(ball);\n        console.log(scores);\n    }\n\n    //bat 1 off bottom\n    if (bat1.y + BAT_HEIGHT + BAT_V_SPACE >= CANVAS_HEIGHT) bat1.y = CANVAS_HEIGHT- BAT_HEIGHT - BAT_V_SPACE;\n    if (bat2.y + BAT_HEIGHT + BAT_V_SPACE >= CANVAS_HEIGHT) {\n        bat2.y = CANVAS_HEIGHT - BAT_HEIGHT - BAT_V_SPACE;\n        bat2.dy = 0;\n    }\n\n    //bat 1 off top\n    if (bat1.y - BAT_V_SPACE <= 0) bat1.y = BAT_V_SPACE;\n    if (bat2.y - BAT_V_SPACE <= 0) {\n        bat2.y = BAT_V_SPACE;\n        bat2.dy = 0;\n    }\n\n}\n\n\n\n//# sourceURL=webpack:///./app/checkMovement.js?");
+	    canvas = document.getElementById('gameCanvas');
+	    canvas.style.cursor = "none";
 
-/***/ }),
 
-/***/ "./app/computerMove.js":
-/*!*****************************!*\
-  !*** ./app/computerMove.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
 
-eval("var {BAT_HEIGHT} = __webpack_require__(/*! ./const */ \"./app/const.js\");\n\nmodule.exports = function computerMove(bat2, ball) {\n    if (ball.direction == \"left\") {\n        // bat2.dy = 0;\n        // return;\n    }\n    {\n        if (bat2.y + (BAT_HEIGHT / 2) > ball.y) {\n            bat2.dy = bat2.dy - bat2.accel;\n            if(bat2.dy < - bat2.maxSpeed) bat2.dy = -bat2.maxSpeed;\n\n        } else {\n            bat2.dy =bat2.dy + bat2.accel;\n            if(bat2.dy > bat2.maxSpeed) bat2.dy = bat2.maxSpeed;\n        }\n    }\n}\n\n//# sourceURL=webpack:///./app/computerMove.js?");
+	    var fps = 30;
+	    setInterval(function () {
 
-/***/ }),
+	       moveEverything();
+	        checkMovement();
+	        drawEverything(canvas);
 
-/***/ "./app/const.js":
-/*!**********************!*\
-  !*** ./app/const.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
 
-eval("module.exports = {\n    BAT_HEIGHT: 100,\n    BAT_WIDTH: 15,\n    BAT_H_SPACE: 100,\n    BAT_V_SPACE: 30,\n    COMP_SPEED: 6,\n    CANVAS_HEIGHT: 600,\n    CANVAS_WIDTH: 800\n\n}\n\n//# sourceURL=webpack:///./app/const.js?");
+	    }, 1000 / fps);
 
-/***/ }),
+	    canvas.addEventListener('mousemove', function (e) {
+	        mousePosition = getMousePosition(e);
+	        bat1.newY = mousePosition.y - BAT_HEIGHT / 2;
 
-/***/ "./app/drawEverything.js":
-/*!*******************************!*\
-  !*** ./app/drawEverything.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+	    })
+	}
 
-eval("var {CANVAS_HEIGHT, CANVAS_WIDTH, BAT_WIDTH, BAT_HEIGHT} = __webpack_require__(/*! ./const */ \"./app/const.js\");\nvar {ball, bat1, bat2} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\nvar drawRect = __webpack_require__(/*! ./drawRect */ \"./app/drawRect.js\");\n\nmodule.exports = function drawEverything() {\n    //canvas\n    drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, 'black');\n\n    //ball\n    drawRect(ball.x, ball.y, 10, 10, 'white');\n\n    //bat1\n    drawRect(bat1.x, bat1.y, BAT_WIDTH, BAT_HEIGHT, 'white');\n\n\n    //bat2\n    drawRect(bat2.x, bat2.y, BAT_WIDTH, BAT_HEIGHT, 'white');\n}\n\n\n\n\n\n//# sourceURL=webpack:///./app/drawEverything.js?");
+	function getMousePosition(e) {
+	    var rect = canvas.getBoundingClientRect();
+	    var root = document.documentElement;
+	    mouseX = e.clientX - rect.left - root.scrollLeft;
+	    mouseY = e.clientY - rect.top - root.scrollTop;
+	    return {x: mouseX, y: mouseY};
 
-/***/ }),
+	}
 
-/***/ "./app/drawRect.js":
-/*!*************************!*\
-  !*** ./app/drawRect.js ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
 
-eval("var {canvas, canvasContext} = __webpack_require__(/*! ./initial */ \"./app/initial.js\");\n\nmodule.exports = function drawRect(X, Y, width, height, colour) {\n    canvasContext.fillStyle = colour;\n    canvasContext.fillRect(X, Y, width, height);\n}\n\n//# sourceURL=webpack:///./app/drawRect.js?");
 
-/***/ }),
 
-/***/ "./app/initial.js":
-/*!************************!*\
-  !*** ./app/initial.js ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
 
-eval("const {BAT_H_SPACE, BAT_WIDTH, BAT_HEIGHT} = __webpack_require__(/*! ./const */ \"./app/const.js\");\n\n\nmodule.exports = {\n    bat1: {\n        y: (600 - BAT_HEIGHT)/2,\n        x: BAT_H_SPACE,\n        dy: 0\n    },\n    bat2: {\n        y: (600 - BAT_HEIGHT)/2,\n        x: 800 - BAT_H_SPACE - BAT_WIDTH,\n        dy: 4,\n        maxSpeed: 20,\n        accel: 1\n    },\n    ball: {\n        x: 100,\n        y: 100,\n        dx: 10,\n        dy: 6,\n        size: 20,\n        inplay: true,\n        direction: \"right\"\n    },\n    scores: {\n        player: 0,\n        comp: 0\n    },\n    canvas: {},\n    canvasContext: {}\n}\n\n//# sourceURL=webpack:///./app/initial.js?");
 
-/***/ }),
 
-/***/ "./app/moveEverything.js":
-/*!*******************************!*\
-  !*** ./app/moveEverything.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
 
-eval("var computerMove = __webpack_require__(/*! ./computerMove */ \"./app/computerMove.js\");\n\nmodule.exports = function moveEverything(ball,bat1,bat2) {\n    ball.x = ball.x + ball.dx;\n    ball.y = ball.y + ball.dy;\n    bat1.y = bat1.newY;\n    computerMove(bat2, ball);\n    bat2.y += bat2.dy;\n}\n\n//# sourceURL=webpack:///./app/moveEverything.js?");
 
-/***/ }),
 
-/***/ "./app/reverseBallDirection.js":
-/*!*************************************!*\
-  !*** ./app/reverseBallDirection.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
 
-eval("module.exports = function reverseBallDirection(ball) {\n    if (ball.direction === \"right\") {\n        ball.direction = \"left\";\n    } else {\n        ball.direction = \"right\";\n    }\n}\n\n//# sourceURL=webpack:///./app/reverseBallDirection.js?");
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
 
-/***/ })
+	const {BAT_H_SPACE, BAT_WIDTH, BAT_HEIGHT} = __webpack_require__(2);
 
-/******/ });
+
+	module.exports = {
+	    bat1: {
+	        y: (600 - BAT_HEIGHT)/2,
+	        x: BAT_H_SPACE,
+	        dy: 0
+	    },
+	    bat2: {
+	        y: (600 - BAT_HEIGHT)/2,
+	        x: 800 - BAT_H_SPACE - BAT_WIDTH,
+	        dy: 4,
+	        maxSpeed: 20,
+	        accel: 1
+	    },
+	    ball: {
+	        x: 100,
+	        y: 100,
+	        dx: 10,
+	        dy: 6,
+	        size: 20,
+	        inplay: true,
+	        direction: "right"
+	    },
+	    scores: {
+	        player: 0,
+	        computer: 0
+	    },
+	    canvas: {},
+	    canvasContext: {}
+	}
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	    BAT_HEIGHT: 100,
+	    BAT_WIDTH: 15,
+	    BAT_H_SPACE: 100,
+	    BAT_V_SPACE: 30,
+	    COMP_SPEED: 6,
+	    CANVAS_HEIGHT: 600,
+	    CANVAS_WIDTH: 800,
+	    DIGIT_CELL_SIZE: 10,
+	    PLAYER_SCORE_X: 150,
+	    PLAYER_SCORE_Y: 50,
+	    COMPUTER_SCORE_X: 500,
+	    COMPUTER_SCORE_Y: 50,
+	    SCORE_SPACE:10
+
+	}
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var computerMove = __webpack_require__(4);
+	var {bat1, bat2, ball} = __webpack_require__(1);
+
+	module.exports = function moveEverything() {
+	    ball.x = ball.x + ball.dx;
+	    ball.y = ball.y + ball.dy;
+	    bat1.y = bat1.newY;
+	    computerMove(bat2, ball);
+	    bat2.y += bat2.dy;
+	}
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var {BAT_HEIGHT} = __webpack_require__(2);
+
+	module.exports = function computerMove(bat2, ball) {
+	    if (ball.direction == "left") {
+	        // bat2.dy = 0;
+	        // return;
+	    }
+	    {
+	        if (bat2.y + (BAT_HEIGHT / 2) > ball.y) {
+	            bat2.dy = bat2.dy - bat2.accel;
+	            if(bat2.dy < - bat2.maxSpeed) bat2.dy = -bat2.maxSpeed;
+
+	        } else {
+	            bat2.dy =bat2.dy + bat2.accel;
+	            if(bat2.dy > bat2.maxSpeed) bat2.dy = bat2.maxSpeed;
+	        }
+	    }
+	}
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var {BAT_WIDTH, CANVAS_HEIGHT, CANVAS_WIDTH, BAT_H_SPACE, BAT_HEIGHT, BAT_V_SPACE} = __webpack_require__(2);
+	var {scores} = __webpack_require__(1);
+	var ballReset = __webpack_require__(6);
+	var reverseBallDirection = __webpack_require__(7);
+	var {bat1, bat2, ball} = __webpack_require__(1);
+
+
+	module.exports = function checkMovement() {
+
+	    var bat = new Audio('./sounds/bat.wav');
+	    var wall = new Audio('./sounds/wall.wav');
+	    var out = new Audio('./sounds/out.wav');
+	    //hit bat1
+	    if (ball.x <= BAT_WIDTH + bat1.x) {
+	        if (ball.inplay) {
+	            if (ball.y + ball.size > bat1.y &&
+	                ball.y < (bat1.y + BAT_HEIGHT) &&
+	                ball.inplay) {
+	                ball.dx = -ball.dx;
+	                reverseBallDirection(ball);
+	                bat.play();
+	            } else {
+	                ball.inplay = false;
+	            }
+	        }
+
+	    }
+
+	    //hit bat2
+	    if (ball.x + ball.size >= CANVAS_WIDTH - BAT_H_SPACE) {
+	        if (ball.inplay) {
+	            if (ball.y + ball.size > bat2.y &&
+	                ball.y < (bat2.y + BAT_HEIGHT) &&
+	                ball.inplay) {
+	                ball.dx = -ball.dx;
+	                reverseBallDirection(ball);
+	                bat.play();
+	            } else {
+	                ball.inplay = false;
+	            }
+	        }
+	    }
+
+	    //hit top
+	    if (ball.y <= 0){
+	        ball.dy = -ball.dy;
+	        wall.play();
+	    }
+
+	    //hit bottom
+	    if (ball.y + ball.size >= CANVAS_HEIGHT) {
+	        ball.dy = -ball.dy;
+	        wall.play();
+	    }
+
+	    //out left
+	    if (ball.x + ball.size <= 0){
+	        scores.computer++;
+	        ballReset(ball);
+	        out.play();
+	       // console.log(scores);
+	    }
+
+	    //out right
+	    if (ball.x >= CANVAS_WIDTH) {
+	        scores.player++;
+	        ballReset(ball);
+	        console.log(scores);
+	        out.play();
+	    }
+
+	    //bat 1 off bottom
+	    if (bat1.y + BAT_HEIGHT + BAT_V_SPACE >= CANVAS_HEIGHT) bat1.y = CANVAS_HEIGHT- BAT_HEIGHT - BAT_V_SPACE;
+	    if (bat2.y + BAT_HEIGHT + BAT_V_SPACE >= CANVAS_HEIGHT) {
+	        bat2.y = CANVAS_HEIGHT - BAT_HEIGHT - BAT_V_SPACE;
+	        bat2.dy = 0;
+	    }
+
+	    //bat 1 off top
+	    if (bat1.y - BAT_V_SPACE <= 0) bat1.y = BAT_V_SPACE;
+	    if (bat2.y - BAT_V_SPACE <= 0) {
+	        bat2.y = BAT_V_SPACE;
+	        bat2.dy = 0;
+	    }
+
+	}
+
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var {CANVAS_HEIGHT, CANVAS_WIDTH} = __webpack_require__(2);
+	module.exports = function ballReset(ball) {
+	    ball.inplay = true;
+	    ball.x = CANVAS_WIDTH / 2;
+	    ball.y = CANVAS_HEIGHT / 2;
+	}
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = function reverseBallDirection(ball) {
+	    if (ball.direction === "right") {
+	        ball.direction = "left";
+	    } else {
+	        ball.direction = "right";
+	    }
+	}
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var {CANVAS_HEIGHT, CANVAS_WIDTH, BAT_WIDTH, BAT_HEIGHT} = __webpack_require__(2);
+	var {bat1, bat2, ball, scores} = __webpack_require__(1);
+	var drawRect = __webpack_require__(9);
+	drawDigit = __webpack_require__(10);
+	var drawScore = __webpack_require__(12);
+
+
+
+	module.exports = function drawEverything(canvas) {
+	    //canvas
+	    drawRect(canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, 'black');
+	    //drawRect(canvas,200,200,100,100,'white');
+	    //drawDigit(canvas);
+	    drawScore(canvas);
+
+	    //ball
+	    drawRect(canvas, ball.x, ball.y, 10, 10, 'white');
+
+	    //bat1
+	    drawRect(canvas, bat1.x, bat1.y, BAT_WIDTH, BAT_HEIGHT, 'white');
+
+
+	    //bat2
+	    drawRect(canvas, bat2.x, bat2.y, BAT_WIDTH, BAT_HEIGHT, 'white');
+
+
+	}
+
+
+
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	
+
+	module.exports = function (canvas, X, Y, width, height, colour) {
+	    canvasContext = canvas.getContext('2d');
+	    canvasContext.fillStyle = colour;
+	    canvasContext.fillRect(X, Y, width, height);
+	}
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var drawRect = __webpack_require__(9);
+	var {DIGIT_CELL_SIZE} = __webpack_require__(2);
+	var digits = __webpack_require__(11);
+
+	module.exports = function (canvas, digit, x, y) {
+	    var digitArray = digits[digit];
+	    for (var row = 0; row < 5; row++) {
+	        for (var column = 0; column < 3; column++) {
+	            if (digitArray[row * 3 + column] === 1){
+	                colour = 'white'
+	            }else{
+	                colour = 'black'
+	            }
+	            // console.log("row="+row);
+	            // console.log('colimn='+column)
+	            // console.log("digitArray[row * 3 + column]="+digitArray[row * 3 + column]);
+	            // console.log("colour = "+colour)
+	            drawRect(canvas,
+	                x + column * DIGIT_CELL_SIZE,
+	                y + row * DIGIT_CELL_SIZE,
+	                DIGIT_CELL_SIZE,
+	                DIGIT_CELL_SIZE,
+	                colour);
+	        }
+	    }
+
+	}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = [
+	    [
+	        1,1,1,
+	        1,0,1,
+	        1,0,1,
+	        1,0,1,
+	        1,1,1
+	    ],
+	    [
+	        1,1,0,
+	        0,1,0,
+	        0,1,0,
+	        0,1,0,
+	        1,1,1
+	    ],
+	    [
+	        1,1,1,
+	        0,0,1,
+	        1,1,1,
+	        1,0,0,
+	        1,1,1
+	    ],
+	    [
+	        1,1,1,
+	        0,0,1,
+	        1,1,1,
+	        0,0,1,
+	        1,1,1
+	    ],
+	    [
+	        1,0,1,
+	        1,0,1,
+	        1,1,1,
+	        0,0,1,
+	        0,0,1
+	    ],
+	    [
+	        1,1,1,
+	        1,0,0,
+	        1,1,1,
+	        0,0,1,
+	        1,1,1
+	    ],
+	    [
+	        1,0,0,
+	        1,0,0,
+	        1,1,1,
+	        1,0,1,
+	        1,1,1
+	    ],
+	    [
+	        1,1,1,
+	        0,0,1,
+	        0,0,1,
+	        0,0,1,
+	        0,0,1
+	    ],
+	    [
+	        1,1,1,
+	        1,0,1,
+	        1,1,1,
+	        1,0,1,
+	        1,1,1
+	    ],
+	    [
+	        1,1,1,
+	        1,0,1,
+	        1,1,1,
+	        0,0,1,
+	        0,0,1
+	    ],
+	    [
+	        0,0,0,
+	        0,0,0,
+	        0,0,0,
+	        0,0,0,
+	        0,0,0,
+
+	    ]
+	]
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var {PLAYER_SCORE_X, PLAYER_SCORE_Y, COMPUTER_SCORE_X, COMPUTER_SCORE_Y, DIGIT_CELL_SIZE, SCORE_SPACE} = __webpack_require__(2);
+	var {scores} = __webpack_require__(1)
+	var drawDigit = __webpack_require__(10);
+
+	module.exports = function(canvas){
+	    var blank = 10
+	    var playerDigit1, playerDigit2, computerDigit1, computerDigit2;
+	    if (scores.player > 9){
+	        playerDigit1 = scores.player.toString().charAt(0);
+	        playerDigit2 = scores.player.toString().charAt(1);
+	    } else {
+	        playerDigit1 = blank;
+	        playerDigit2 = scores.player.toString().charAt(scores.player.toString().length - 1);
+	    }
+
+	    if (scores.computer > 9){
+	        computerDigit1 = scores.computer.toString().charAt(0);
+	        computerDigit2 = scores.computer.toString().charAt(1);
+	    } else {
+	       computerDigit1 = blank;
+	       computerDigit2 = scores.computer.toString().charAt(scores.computer.toString().length - 1);
+	    }
+
+
+	    drawDigit(canvas, playerDigit1, PLAYER_SCORE_X, PLAYER_SCORE_Y);
+	    drawDigit(canvas, playerDigit2, PLAYER_SCORE_X + DIGIT_CELL_SIZE * 3 + SCORE_SPACE , PLAYER_SCORE_Y);
+
+	    drawDigit(canvas, computerDigit1, COMPUTER_SCORE_X, COMPUTER_SCORE_Y);
+	    drawDigit(canvas, computerDigit2, COMPUTER_SCORE_X + DIGIT_CELL_SIZE * 3 + SCORE_SPACE , COMPUTER_SCORE_Y);
+	}
+
+/***/ }
+/******/ ]);

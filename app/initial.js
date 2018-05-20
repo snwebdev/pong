@@ -25,7 +25,7 @@ module.exports = {
     },
     scores: {
         player: 0,
-        comp: 0
+        computer: 0
     },
     canvas: {},
     canvasContext: {}
